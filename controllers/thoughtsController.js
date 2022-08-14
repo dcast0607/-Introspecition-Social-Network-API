@@ -1,5 +1,6 @@
 const { ObjectId } = require('mongoose').Types;
 
+const { response } = require('express');
 const { User, Thought } = require('../models');
 
 module.exports = {
@@ -9,8 +10,16 @@ module.exports = {
     // Beginning of get all thoughts function
         getThoughts(req, res) {
             Thought.find()
-            .then((thoughts) => res.json(thoughts))
-            .catch((err) => res.status(500).json(err));
+            .then(async (thoughts) => {
+                const thoughtObj = {
+                    thoughts,
+                };
+                return res.json(thoughtObj);
+            })
+            .catch((error) => {
+                console.log(error);
+                return res.status(500).json(err);
+            })
         },
     // End of get all thoughts function
 
@@ -55,22 +64,10 @@ module.exports = {
             Thought.deleteOne( { _id: req.params.thoughtId })
             .then(() => {
                 console.log("Thought deleted successfully")
-                // TODO: Fix this so it doesn't return all thoughts, should return all thoughts for user.
-                // Thought.find()
-                // .then(async (thoughts) => {
-                //     const thoughtObj = {
-                //         thoughts,
-                //         userCount: await userCount(),
-                //     };
-                //     return res.json(userObj);
-                // })
-                // .catch((error) => {
-                //     console.log(error);
-                //     return res.status(500).json(err);
-                //})
+                res.status(200).json({ message: 'Thought deleted successfully'});
             })
-            .catch((error) => {
-                console.log(error);
+            .catch((err) => {
+                console.log(err);
                 return res.status(500).json(err);
             });
         }

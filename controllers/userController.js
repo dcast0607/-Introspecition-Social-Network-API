@@ -83,15 +83,15 @@ module.exports = {
                     users,
                     userCount: await userCount(),
                 };
-                return res.json(userObj);
+                return res.json({message: `User deleted successfully. These are the remaining users: ${JSON.stringify(userObj)}`});
             })
-            .catch((error) => {
-                console.log(error);
+            .catch((err) => {
+                console.log(err);
                 return res.status(500).json(err);
             })
         })
-        .catch((error) => {
-            console.log(error);
+        .catch((err) => {
+            console.log(err);
             return res.status(500).json(err);
         });
     }
