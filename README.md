@@ -25,6 +25,10 @@ As previously mentioned, these objects have been built to mimic some of the basi
 * [Installation](#installation)
 * [Usage](#usage)
 * [Testing Through Postman](#testing-through-our-postman-collection)
+* [Getting Started](#getting-started)
+* [API Documentation](#api-documentation)
+* 
+
 
 ## Installation
 
@@ -91,7 +95,7 @@ The thoughts object has also been created to contain the reactions object within
       },
       "createdAt": {
         "$date": {
-          "$numberLong": "1661055115842"
+          "$numberLong": "1661055115842" // Timestamp will be displayed as date time when your make API requests 
         }
       }
     }
@@ -114,6 +118,10 @@ To make your life easier, I recommend that you take advantage of the variables t
 
 **Postman Query Variables**
 ![Alt text](./images/URLQueries.png "Postman Query Variables") </br>
+
+## Getting Started
+
+When testing this application, please be aware that I added some sample data for you to work with. To populate this data, please run ```node utils/seed```. Running this command will generate a set of user data, thoughts data, and reactions data that you can user to interact with the API. If you would like to expand or modify this data, please look at the files that exist with thin ```utils``` folder. 
 
 ## API Documentation
 
