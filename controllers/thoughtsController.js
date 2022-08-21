@@ -32,7 +32,7 @@ module.exports = {
             ? res.status(404).json({ message: "No such thought with that ID"})
             : res.json(thought)
             )
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => res.status(500).json({ Message: "Please make sure that you include a valid thought ID. Please try again."}));
         },
     // End of single thought function
 
@@ -77,7 +77,7 @@ module.exports = {
             .then(() => {
                 res.status(200).json(thoughtData);
             }).catch((err) => {
-                res.status(500).json(err);
+                res.status(500).json({Message: "We were not able to create the thought, please try again and make sure you include the required information."});
             })
         },
     // End of thought creation function
@@ -93,7 +93,7 @@ module.exports = {
                 new: true
             })
             .then((user) => res.json(user))
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => res.status(500).json({Message: "Could not find thought association to that thought ID. Please try again."}));
         },
     // End of update single thought function
 
@@ -106,7 +106,7 @@ module.exports = {
             })
             .catch((err) => {
                 console.log(err);
-                return res.status(500).json(err);
+                return res.status(500).json({Message: "Could not find thought associated to that thought ID. Please try again."});
             });
         },
     // End of delete thought function

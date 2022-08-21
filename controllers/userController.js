@@ -200,7 +200,7 @@ module.exports = {
             res.status(200).json({ message: "Friend removed from user's friend list."} );
         })
         .catch((err) => {
-            res.status(500).json(err.message);
+            res.status(500).json({ Messsage: "Unable to remove friend from user's friend list. Please try again and make sure you have included the required information."});
         })
     }
     // End of function to remove friend from user record
