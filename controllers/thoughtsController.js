@@ -38,9 +38,46 @@ module.exports = {
 
     // Beginning of thought creation function
         createThought(req, res) {
+            let username = '';
+            let thoughtData = new Object();
+            // Create a new thought
             Thought.create(req.body)
-            .then((thought) => res.json(thought))
-            .catch((err) => res.status(500).json(err));
+            .then((thought) => {
+                username = thought.username;
+                thoughtData = thought;
+            })
+            .then(() => {
+                Thought.find( { username: username })
+                .then((thoughts) => {
+                    const thoughtIds = [];
+                    thoughts.forEach((thought) => {
+                        thoughtIds.push(thought._id);
+                    })
+                    return thoughtIds;
+                })
+                .then((thoughtIds) => {
+                    console.log(thoughtIds);
+                    const filter = { username: username };
+                    const update = { thoughts: thoughtIds };
+                    User.findOneAndUpdate(filter, update, {
+                        new: true,
+                    })
+                    .then(() => {
+                        console.log(`Updated ${username} thoughts!`)
+                    })
+                    .catch((err) => {
+                        console.log(`Failed to update ${username} thoughts.`);
+                    })
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+            })
+            .then(() => {
+                res.status(200).json(thoughtData);
+            }).catch((err) => {
+                res.status(500).json(err);
+            })
         },
     // End of thought creation function
 

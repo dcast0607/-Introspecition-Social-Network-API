@@ -75,29 +75,51 @@ module.exports = {
 
     // Function to delete an existing user record
     deleteUser (req, res) { 
-        User.deleteOne( { _id: req.params.userId })
+        let queriedUsername= '';
+        // We query here to retrieve the username of the respective user record
+        // and store that in a variable called queriedUsername.
+        User.findOne( { _id: req.params.userId })
+        .then(async (user) => {
+            queriedUsername = user.username;
+            console.log(queriedUsername);
+        })
+        // We user a then function to delete the user that corresponds to the 
+        // user ID passed in the API request. 
         .then(() => {
-            User.find()
-            .then(async (users) => {
-                const userObj = {
-                    users,
-                    userCount: await userCount(),
-                };
-                return res.json({message: `User deleted successfully. These are the remaining users: ${JSON.stringify(userObj)}`});
+            User.deleteOne( { _id: req.params.userId })
+            // Once the user is deleted we make a request to pull all the existing
+            // user data so that we can show how many users are left in our API response.
+            .then(() => {
+                User.find()
+                .then(async (users) => {
+                    const userObj = {
+                        users,
+                        userCount: await userCount(),
+                    };
+                    console.log(`There are ${JSON.stringify(userObj.userCount)} users left. User deleted successfully.`)
+                }).catch((err) => {
+                    console.log("We were not able to delete the user.")
+                });
             })
             .catch((err) => {
-                console.log(err);
-                return res.status(500).json(err);
+                console.log("User deletion unsuccessful.")
+            })
+        })
+        // Using the username that we queried prior to the user being deleted, we can make a delete many request
+        // to delete the associated thoughts for that username. 
+        .then(() => {
+            Thought.deleteMany({ username: queriedUsername })
+            .then(() => {
+                res.status(200).json({ message: `User: ${queriedUsername} deleted. Thoughts for this user deleted as well.` });
+            }).catch((err) => {
+                console.log("We were not able to delete the associated user thoughts.")
             })
         })
         .catch((err) => {
-            console.log(err);
-            return res.status(500).json(err);
+            res.status(500).json({ message: "Invalid user, please verify that you have the right user ID"});
         });
     }
     //End of function to delete an existing user record
-
-    // TODO: Add a way to delete user's thoughts when the user is deleted. 
 
 // END OF USER ROUTES
 

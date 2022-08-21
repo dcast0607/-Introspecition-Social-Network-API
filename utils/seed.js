@@ -2,7 +2,7 @@ const connection = require('../config/connection');
 const User = require('../models/User');
 const Thought  = require('../models/Thought');
 const { ObjectId } = require('mongoose').Types;
-const { getRandomThought, getUserName } = require('./data');
+const { getRandomThought, getUserName, getRandomReaction } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -77,6 +77,25 @@ connection.once('open', async () => {
             new: true
         });
     };
+
+    for (let i = 0; i < 6; i++) {
+        const username = getUserName(i);
+        const randomThoughtIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const thoughtRandomizer = Math.floor(Math.random() * randomThoughtIndex.length);
+        const reaction = getRandomReaction(randomThoughtIndex[thoughtRandomizer]);
+
+        const update = { username: username };
+        const filter = { 
+            reactions: {
+                reactionBody: reaction,
+                username: username
+            }
+        };
+
+        await Thought.findOneAndUpdate( update, filter, {
+            new: true
+        });
+    }
 
 
     console.table(users);
