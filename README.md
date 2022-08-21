@@ -18,6 +18,25 @@ The "Introspection Social Network API" is a back-end API that aims to replicate 
     * Create a new reaction
     * Delete an existing reaction
 
+As previously mentioned, these objects have been built to mimic some of the basic functionality that is used by social media companies such as Facebook, Twitter, etc... 
+
+## Table of Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [Testing Through Postman](#testing-through-our-postman-collection)
+
+## Installation
+
+The following must be installed to successfully use this API: 
+* Node JS
+* Express JS
+* Nodemon (Optional)
+* MongoDB
+* Mongoose
+
+## Usage
+
 ## Testing Through Our Postman Collection
 
 I've created a postman collection that you can use to test the Introspection API. Although the API is pretty self-explanatory, please make sure that you read through the README to fully understand the functionality of this API.
