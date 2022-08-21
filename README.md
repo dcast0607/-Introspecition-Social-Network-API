@@ -127,7 +127,7 @@ When testing this application, please be aware that I added some sample data for
 
 ## API Documentation
 
-#### User Routes
+### User Routes
 **WHERE ```{{apiURL}}``` is your root API URL.** </br>
 
 ##### Retrieve Existing Users Endpoint
@@ -158,6 +158,38 @@ curl --location --request GET 'localhost:3001/api/users/'
 }
 ```
 
-#### Thought Routes
+##### Retrieve a Single User Record
+```GET {{apiURL}}/api/users/:userId``` </br>
+
+This ```GET``` endpoint lets you send a ```userId``` in your request that retrieves a user record that matches the specified user ID. 
+
+**Sample Request:**
+
+```
+curl --location --request GET 'localhost:3001/api/users/:userId'
+```
+
+**Sample Response:**
+
+```
+{
+    "user": {
+        "_id": "6301b3772f448f8c81a9236d",
+        "username": "tomRiddle",
+        "email": "testEmail5@email.com",
+        "friends": [
+            "6301b3772f448f8c81a92366"
+        ],
+        "thoughts": [
+            "6301b3772f448f8c81a92357",
+            "6301b3772f448f8c81a92358"
+        ]
+    }
+}
+```
+
+If an invalid ```userId``` is sent in your request you will see a 500 error code and a message indicating that we could not find the user.
+
+### Thought Routes
 **WHERE {{apiURL}} is your root API URL.**
 ```Base URL: {{apiURL}}/api/thoughts```

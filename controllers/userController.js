@@ -39,12 +39,10 @@ module.exports = {
                 ? res.status(404).json({ message: 'No such user with that ID'})
                 : res.json({
                     user
-                    //TODO: Add support to fetch friends list and thoughts
                     })
                 )
             .catch((error) => {
-                console.log(error);
-                return res.status(500).json(error);
+                return res.status(500).json({ Message: "User does not exist with that user ID, please try again with a valid user ID."});
             });
     },
     // End of get a single user function.
