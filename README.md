@@ -109,6 +109,10 @@ I've created a postman collection that you can use to test the Introspection API
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/109c14a80e21ef674f84?action=collection%2Fimport)
 
+If you are not able to use the link above, please import the collection using the JSON link below. 
+
+[JSON Collection](https://www.getpostman.com/collections/109c14a80e21ef674f84)
+
 #### Notes: 
 
 To make your life easier, I recommend that you take advantage of the variables that I've included. This will make it much easier to test against different environments, this will also make it easier to update your queries as you test the API. 
