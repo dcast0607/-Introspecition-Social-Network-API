@@ -121,7 +121,43 @@ To make your life easier, I recommend that you take advantage of the variables t
 
 ## Getting Started
 
-When testing this application, please be aware that I added some sample data for you to work with. To populate this data, please run ```node utils/seed```. Running this command will generate a set of user data, thoughts data, and reactions data that you can user to interact with the API. If you would like to expand or modify this data, please look at the files that exist with thin ```utils``` folder. 
+When testing this application, please be aware that I added some sample data for you to work with. To populate this data, please run ```node utils/seed```. Running this command will generate a set of user data, thoughts data, and reactions data that you can user to interact with the API. If you would like to expand or modify this data, please look at the files that exist with thin ```utils``` folder. Once you run this command, you will see the following data on your database: 
+
+![Alt text](./images/seedData.png "API Seed Data") </br>
 
 ## API Documentation
 
+#### User Routes
+**WHERE {{apiURL}} is your root API URL.**
+```Base URL: {{apiURL}}/api/users```
+
+##### Retrieve Existing Users Endpoint
+```GET {{apiURL}}/api/users```
+This ```GET``` endpoint lets you make a query to our Mongo database to retrieve a list of existing users in the database. 
+
+**Sample Request:**
+```
+curl --location --request GET 'localhost:3001/api/users/'
+```
+
+**Sample Response:**
+```
+{
+    "_id": "6301b3772f448f8c81a9236d",
+    "username": "tomRiddle",
+    "email": "testEmail5@email.com",
+    "friends": [
+        "6301b3772f448f8c81a92366"
+    ],
+    "thoughts": [
+        "6301b3772f448f8c81a92357",
+        "6301b3772f448f8c81a92358"
+    ],
+    "friendCount": 1,
+    "id": "6301b3772f448f8c81a9236d"
+}
+```
+
+#### Thought Routes
+**WHERE {{apiURL}} is your root API URL.**
+```Base URL: {{apiURL}}/api/thoughts```
