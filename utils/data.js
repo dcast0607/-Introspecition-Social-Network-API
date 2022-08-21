@@ -1,4 +1,4 @@
-// TODO: If enough time find a way to add data to the DB. 
+// This file contains the raw user data that we use to seed the database. I also created some functions that will be used to retrieve the specific user data. 
 
 const usernames = [
     'testUser1',
@@ -24,8 +24,6 @@ const thoughts = [
     'Dozens of strangers have photographed your front door.',
 ]
 
-
-// TODO: Maybe add a way to seed this data as well
 const reactions = [
     "OMG that's so funny",
     "Wow hadn't thought of that before",

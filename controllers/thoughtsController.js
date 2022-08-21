@@ -1,3 +1,5 @@
+// Defines the required objects/packages.
+
 const { ObjectId } = require('mongoose').Types;
 
 const { response, request } = require('express');
@@ -9,13 +11,18 @@ module.exports = {
 
     // Beginning of get all thoughts function
         getThoughts(req, res) {
+            // Uses the find() method to retrieve a list of all thoughts
+            // that exist in teh database.
             Thought.find()
+            // Data is sent to the user as a response and we return a 200 code.
             .then(async (thoughts) => {
                 const thoughtObj = {
                     thoughts,
                 };
-                return res.json(thoughtObj);
+                return res.status(200).json(thoughtObj);
             })
+            // If no data is found or we encounter an error, we return a 500 error and 
+            // the respective  error. 
             .catch((error) => {
                 console.log(error);
                 return res.status(500).json(err);
@@ -25,24 +32,43 @@ module.exports = {
 
     // Beginning of get single thought function
         getSingleThought(req, res) {
+            // We use the findOne() method to find an individual thought
+            // record. The thoughtId that is provided in the request
+            // is used to query for the individual thought record. 
             Thought.findOne( { _id: req.params.thoughtId } )
             .select('-__v')
             .then((thought) => 
+            // If no thought is found we return an error code and an error 
+            // message. 
             !thought
             ? res.status(404).json({ message: "No such thought with that ID"})
-            : res.json(thought)
+            // If we do find a thought record we return that to the user an issue
+            // a 200 response code.
+            : res.status(200).json(thought)
             )
+            // If the request fails, we return a 500 error code and ask the user to try again.
             .catch((err) => res.status(500).json({ Message: "Please make sure that you include a valid thought ID. Please try again."}));
         },
     // End of single thought function
 
     // Beginning of thought creation function
+    // This function was a little tricky to build as it not only requires,
+    // that we create a new thought record but also that when a new record 
+    // is created, that the ID of that thought is added to the users object
+    // as a new entry in the "thoughts" array. 
         createThought(req, res) {
+
             let username = '';
             let thoughtData = new Object();
 
             // Create a new thought
             Thought.create(req.body)
+            // We store the API request data as it will be used to make subsequent
+            // calls to our database. 
+
+            // Thought is created here. We store, the username so that we can then
+            // use this username to update the existing user record with the associated
+            // thought ID. 
             .then((thought) => {
                 username = thought.username;
                 thoughtData = thought;
@@ -83,6 +109,8 @@ module.exports = {
     // End of thought creation function
 
     // Beginning of update single thought function
+    // We are just updating the existing thought data with this function. It
+    // is similar to the update function we used on our userControllers file.
         updateSingleThought(req, res) {
             const filter = { _id: req.params.thoughtId };
             const update = {
@@ -97,7 +125,10 @@ module.exports = {
         },
     // End of update single thought function
 
-    // Beginning of delete thought function
+    // Beginning of delete thought function\
+    // Added similar logic here as the logic that was added in the userControllers file
+    // to delete a user record. The only difference here is that we have not added additional
+    // logic to delete database entries from other database collections.
         deleteThought(req, res) {
             Thought.deleteOne( { _id: req.params.thoughtId })
             .then(() => {
@@ -112,6 +143,10 @@ module.exports = {
     // End of delete thought function
 
     // Beginning of function to add a reaction to a thought
+    // I decided to take the more efficient approach here. 
+    // We are using a single method findOneAndUpdate() to handle
+    // both the identifying of the record that we will be updating
+    // and the addition of the new data that has been sent in our API request.
         createReaction(req, res) {
             let thoughtId = req.params.thoughtId;
             let newReactionData = {
@@ -120,6 +155,7 @@ module.exports = {
             }
 
             const filter = { _id: thoughtId };
+            // We add the new data from the API request to our existing data.
             const update = { $addToSet: { reactions: newReactionData} };
 
             Thought.findOneAndUpdate(filter, update, {
@@ -139,6 +175,9 @@ module.exports = {
     // End of function add a reaction to a thought
 
     // Beginning of function to delete a reaction from a thought
+    // Similar to the function above, we are using similar logic to update the existing
+    // user record, however, in this case we are pulling/removing the data defined by 
+    // the reactionId. 
         deleteReaction(req, res) {
             let thoughtId = req.params.thoughtId;
             let reactionId = req.params.reactionId;

@@ -1,3 +1,11 @@
+/*
+This entire file is used to seed the database with the data that we have added in the data.js file. 
+
+This seed file will also delete any existing data and repopulate the database each time you run this
+file. The goal of this is to make it easier for the end user that is testing our API. Having the seed
+data gives them a place starter to start testing the API right away. 
+*/
+
 const connection = require('../config/connection');
 const User = require('../models/User');
 const Thought  = require('../models/Thought');
@@ -19,6 +27,8 @@ connection.once('open', async () => {
     let createdAt = new Date();
 
 
+    // This function is used to generate random thought data. I introduced a random number
+    // generator to randomly pull a thought from the data in our data.js file.
     function generateRandomThoughtData () {
         for (let i =0; i < 6; i++) {
             const username = getUserName(i);
@@ -35,6 +45,8 @@ connection.once('open', async () => {
         };
     };
 
+    // This function will cycle through the available users in our data.js file and it will
+    // generate data that can used to populate our database. 
     function generateUserData () {
         for (let i =0; i < 6; i++) {
             const username = getUserName(i);
@@ -47,10 +59,13 @@ connection.once('open', async () => {
             });
         }
     }
-
+    
+    // Generated data is added to the database with the insertMany method.
     generateRandomThoughtData();
     await Thought.collection.insertMany(thoughtsData);
 
+
+    // Adding a user that contains a lot of data to make it easier for testing.
     await User.collection.insertOne({
         username: 'dancastro',
         email: 'dancastro.java@gmail.com',
@@ -66,6 +81,8 @@ connection.once('open', async () => {
         ]
     })
 
+
+    // User data is added to the database.
     generateUserData();
     await User.collection.insertMany(users);
 
@@ -99,6 +116,7 @@ connection.once('open', async () => {
             }
         };
 
+        // User data is updated with thought data. 
         await Thought.findOneAndUpdate( update, filter, {
             new: true
         });

@@ -13,6 +13,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
+            // We check to make sure that the email entered by the user is valid.
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid email address']
         },
         thoughts: [{ type: Schema.Types.ObjectId, ref: 'Thought'}],
@@ -26,6 +27,7 @@ const userSchema = new Schema(
     }
 );
 
+// Created a virtual to get the "friendCount" of how many friends a user has.
 userSchema.virtual('friendCount').get(function() {
     return this.friends.length;
 });
