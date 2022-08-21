@@ -141,9 +141,25 @@ To get a deeper look at the API documentation, please navigate to the API docume
 
 ## API Demo
 
-### User Routes
+### Initializing the App and Seeding Data
 
-### Thought Routes
+[Watch Video Here](https://www.loom.com/share/7be8e6f8fb2f48cf889575359eb48ad7)
+
+### Basic CRUD User Routes
+
+[Watch Video Here](https://www.loom.com/share/b683c00fec7840f2ab1429a0dda84b6e)
+
+### Friend User Routes
+
+[Watch Video Here](https://www.loom.com/share/3c60b7a6a3044d76b6a0f022c0b42eca)
+
+### Basic CRUD Thought Routes
+
+[Watch Video Here](https://www.loom.com/share/b768605a45314aa8835b465c756c5ceb)
+
+### Reaction Thought Routes
+
+[Watch Video Here](https://www.loom.com/share/64bbf4ebe2ad4ec488ad968ee60764db)
 
 ## Database Information
 **Mongo Database**
