@@ -222,6 +222,62 @@ curl --location --request POST 'localhost:3001/api/users/' \
 
 The API request validates the request to make sure that you include a ```username``` and ```email``` in the request body. If the user already exists we will also return an error message. 
 
+### Update an Existing User Record
+```PUT {{apiURL}}/api/users/:userId``` </br>
+
+This ```PUT``` route will update an existing user record. This route, lets you send a ```userId``` as query parameter and lets you update the ```username``` and ```email``` data fields of the respective user record.
+
+**Sample Request:**
+```
+curl --location --request PUT 'localhost:3001/api/users/userId' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "username": "someUsername",
+  "email": "someEmail@email.com"
+}'
+```
+
+**Sample Response:**
+```
+{
+    "_id": "63027719b36c214e66853f33",
+    "username": "someUsername",
+    "email": "someEmail@email.com",
+    "friends": [
+        "63027719b36c214e66853f2c"
+    ],
+    "thoughts": [
+        "63027719b36c214e66853f1b",
+        "63027719b36c214e66853f1c"
+    ],
+    "friendCount": 1,
+    "id": "63027719b36c214e66853f33"
+}
+```
+
+If you send an invalid ```userId``` in your request you will get an error message indicating that there is no user with that user ID. If your put request does not include any new user information, the user record is not updated.
+
+### Delete an Existing User Record
+```DELETE {{apiURL}}/api/users/:userId``` </br>
+
+This ```DELETE``` route will delete an existing user record. The user record of the supplied user ID will be deleted.
+
+**Sample Request:**
+
+```
+curl --location --request DELETE 'localhost:3001/api/users/someUserID'
+```
+
+**Sample Response:**
+
+```
+{
+    "message": "User: tomRiddle deleted. Thoughts for this user deleted as well."
+}
+```
+
+If your request includes an invalid ```userId```, you will see an error message indicating that the user does not exist. 
+
 ### Thought Routes
 **WHERE {{apiURL}} is your root API URL.**
 ```Base URL: {{apiURL}}/api/thoughts```

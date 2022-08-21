@@ -67,7 +67,7 @@ module.exports = {
             new: true
         })
         .then((user) => res.json(user))
-        .catch((err) => res.status(500).json(err));
+        .catch((err) => res.status(500).json({ Message: "Could not identify user with the supplied user ID. Please try again with a valid user ID."}));
     },
     // End of user update function
 
