@@ -128,11 +128,11 @@ When testing this application, please be aware that I added some sample data for
 ## API Documentation
 
 #### User Routes
-**WHERE {{apiURL}} is your root API URL.**
-```Base URL: {{apiURL}}/api/users```
+**WHERE ```{{apiURL}}``` is your root API URL.** </br>
 
 ##### Retrieve Existing Users Endpoint
-```GET {{apiURL}}/api/users```
+```GET {{apiURL}}/api/users``` </br>
+
 This ```GET``` endpoint lets you make a query to our Mongo database to retrieve a list of existing users in the database. 
 
 **Sample Request:**
