@@ -152,7 +152,7 @@ module.exports = {
             })
             .catch((err) => {
                 console.log("Could not update the user's friend list");
-            })
+            });
         })
         .then(() => {
             res.status(200).json({ Message: "User friend list has been updated successfully."});
@@ -165,11 +165,43 @@ module.exports = {
 
     // Beginning of function to remove friend from user record
     removeUserFriend(req, res) {
-        const friendIds = [];
-        User.findOne( { _id: req.params.userId })
+        const userFriends = [];
+        
+        let userId = req.params.userId;
+        let friendId = req.params.friendId;
+        let newUserData = {};
+
+        User.findOne( { _id: userId })
         .then((user) => {
-            friendIds =  user.friends;
-        }).catch((err) => {
+            user.friends.forEach((friend) => {
+                userFriends.push(friend);
+            })
+            const newFriendsArray = userFriends.filter((userFriend) => userFriend != friendId);
+            // console.log(newFriendsArray);
+            return newFriendsArray;
+        })
+        .then((newFriendsArray) => {
+            const filter = { _id: userId };
+            const update = { friends: newFriendsArray };
+
+            User.findOneAndUpdate(filter, update, {
+                new: true,
+            })
+            .then((updatedData) => {
+                newUserData = updatedData;
+                // console.log(newUserData);
+            })
+            .then(() => {
+                console.log('User friend list has been updated.');
+            })
+            .catch((err) => {
+                console.log("Could not update the user's friend list");
+            });
+        })
+        .then(() => {
+            res.status(200).json("Friend removed from user's friend list");
+        })
+        .catch((err) => {
             res.status(500).json(err.message);
         })
     }

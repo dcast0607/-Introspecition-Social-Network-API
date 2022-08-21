@@ -39,9 +39,11 @@ connection.once('open', async () => {
         for (let i =0; i < 6; i++) {
             const username = getUserName(i);
             const email = `testEmail${i}@email.com`;
+            const friends = [ new mongoose.Types.ObjectId ]  
             users.push({
                 username,
-                email
+                email,
+                friends
             });
         }
     }
