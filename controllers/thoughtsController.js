@@ -108,8 +108,57 @@ module.exports = {
                 console.log(err);
                 return res.status(500).json(err);
             });
-        }
+        },
     // End of delete thought function
+
+    // Beginning of function to add a reaction to a thought
+        createReaction(req, res) {
+            let thoughtId = req.params.thoughtId;
+            let newReactionData = {
+                reactionBody: req.body.reactionBody,
+                username: req.body.username
+            }
+
+            const filter = { _id: thoughtId };
+            const update = { $addToSet: { reactions: newReactionData} };
+
+            Thought.findOneAndUpdate(filter, update, {
+                new: true,
+            })
+            .then((thought) => {
+                !thought
+                ? res.status(405).json({ Message: "We were not able to locate any thoughts with that ID. Please try again."})
+                : res.status(200).json(thought)
+            })
+            .catch((err) => {
+                res.status(500).json({ Message: "Could not find thought associated to that ID. Please enter a valid ID and try again."});
+            })
+
+
+        },
+    // End of function add a reaction to a thought
+
+    // Beginning of function to delete a reaction from a thought
+        deleteReaction(req, res) {
+            let thoughtId = req.params.thoughtId;
+            let reactionId = req.params.reactionId;
+
+            const filter = { _id: thoughtId };
+            const update = { $pull: {reactions: { reactionId: reactionId } } };
+
+            Thought.findOneAndUpdate(filter, update, {
+                new: true,
+            })
+            .then((thought) => {
+                !thought 
+                ? res.status(405).json({ Message: "Could not find thought associated to that ID. Please enter a valid ID and try again."})
+                : res.status(200).json(thought);
+            })
+            .catch((err) => {
+                res.status(500).json({ Message: "We were not able to delete the reaction. Please make sure that you include a valid thought ID and a valid reaction ID, please try again."});
+            })
+        }
+    // End of function to delete a reaction from a thought
 
 // End of thought functions
 }

@@ -197,7 +197,7 @@ module.exports = {
             });
         })
         .then(() => {
-            res.status(200).json("Friend removed from user's friend list");
+            res.status(200).json({ message: "Friend removed from user's friend list."} );
         })
         .catch((err) => {
             res.status(500).json(err.message);
