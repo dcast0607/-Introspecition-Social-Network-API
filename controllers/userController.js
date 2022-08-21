@@ -51,7 +51,7 @@ module.exports = {
     createUser (req, res) {
         User.create(req.body)
         .then((user) => res.json(user))
-        .catch((err) => res.status(500).json(err));
+        .catch((err) => res.status(500).json({ Message: "User creation failed. Please make sure that your request includes a username and an email. Please make sure that this is also a new user."}));
     },
     // End of function to create a new user record.
 

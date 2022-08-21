@@ -130,10 +130,10 @@ When testing this application, please be aware that I added some sample data for
 ### User Routes
 **WHERE ```{{apiURL}}``` is your root API URL.** </br>
 
-##### Retrieve Existing Users Endpoint
-```GET {{apiURL}}/api/users``` </br>
+### Retrieve Existing Users Endpoint
+```GET {{apiURL}}/api/users/``` </br>
 
-This ```GET``` endpoint lets you make a query to our Mongo database to retrieve a list of existing users in the database. 
+This ```GET``` route lets you make a query to our Mongo database to retrieve a list of existing users in the database. 
 
 **Sample Request:**
 ```
@@ -158,10 +158,10 @@ curl --location --request GET 'localhost:3001/api/users/'
 }
 ```
 
-##### Retrieve a Single User Record
+### Retrieve a Single User Record
 ```GET {{apiURL}}/api/users/:userId``` </br>
 
-This ```GET``` endpoint lets you send a ```userId``` in your request that retrieves a user record that matches the specified user ID. 
+This ```GET``` route lets you send a ```userId``` in your request that retrieves a user record that matches the specified user ID. 
 
 **Sample Request:**
 
@@ -189,6 +189,38 @@ curl --location --request GET 'localhost:3001/api/users/:userId'
 ```
 
 If an invalid ```userId``` is sent in your request you will see a 500 error code and a message indicating that we could not find the user.
+
+### Create a New User Record
+```POST {{apiURL}}/api/users/``` </br>
+
+This ```POST``` route lets you create a new user record by sending a ```username``` and ```email``` in the body of your request. 
+
+**Sample Request:**
+
+```
+curl --location --request POST 'localhost:3001/api/users/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "someUsername",
+    "email": "someEmail@email.com"
+}'
+```
+
+**Sample Response:**
+```
+{
+    "username": "someUsername",
+    "email": "someEmail@email.com",
+    "thoughts": [],
+    "friends": [],
+    "_id": "630272f4c965566ab0563731",
+    "__v": 0,
+    "friendCount": 0,
+    "id": "630272f4c965566ab0563731"
+}
+```
+
+The API request validates the request to make sure that you include a ```username``` and ```email``` in the request body. If the user already exists we will also return an error message. 
 
 ### Thought Routes
 **WHERE {{apiURL}} is your root API URL.**
