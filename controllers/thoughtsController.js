@@ -1,6 +1,6 @@
 const { ObjectId } = require('mongoose').Types;
 
-const { response } = require('express');
+const { response, request } = require('express');
 const { User, Thought } = require('../models');
 
 module.exports = {
@@ -40,6 +40,7 @@ module.exports = {
         createThought(req, res) {
             let username = '';
             let thoughtData = new Object();
+
             // Create a new thought
             Thought.create(req.body)
             .then((thought) => {
