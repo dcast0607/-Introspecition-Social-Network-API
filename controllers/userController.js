@@ -118,9 +118,62 @@ module.exports = {
         .catch((err) => {
             res.status(500).json({ message: "Invalid user, please verify that you have the right user ID"});
         });
-    }
+    },
     //End of function to delete an existing user record
 
+    // Beginning of function to add friend to user record
+    updateUserFriends(req, res) {
+        const userFriends = [];
+        let userId = req.params.userId;
+        let friendId = req.params.friendId;
+        let newUserData = {};
+        User.findOne( { _id: userId })
+        .select('-__v')
+        .lean()
+        .then((user) => {
+            user.friends.forEach((friend) => {
+                userFriends.push(friend);
+            })
+            userFriends.push(friendId);
+            return userFriends;
+        })
+        .then((userFriends) => {
+            filter = { _id: userId };
+            update = { friends: userFriends }; 
+            User.findOneAndUpdate(filter, update, {
+                new: true,
+            })
+            .then((updatedData) => {
+                newUserData = updatedData;
+                console.log(newUserData);
+            })
+            .then(() => {
+                console.log('User friend list has been updated.');
+            })
+            .catch((err) => {
+                console.log("Could not update the user's friend list");
+            })
+        })
+        .then(() => {
+            res.status(200).json({ Message: "User friend list has been updated successfully."});
+        })
+        .catch((err) => {
+            res.status(500).json(err.message);
+        })
+    },
+    // End of function to add friends to user record
+
+    // Beginning of function to remove friend from user record
+    removeUserFriend(req, res) {
+        const friendIds = [];
+        User.findOne( { _id: req.params.userId })
+        .then((user) => {
+            friendIds =  user.friends;
+        }).catch((err) => {
+            res.status(500).json(err.message);
+        })
+    }
+    // End of function to remove friend from user record
 // END OF USER ROUTES
 
 };

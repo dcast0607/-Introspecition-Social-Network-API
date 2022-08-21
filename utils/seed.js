@@ -3,6 +3,7 @@ const User = require('../models/User');
 const Thought  = require('../models/Thought');
 const { ObjectId } = require('mongoose').Types;
 const { getRandomThought, getUserName, getRandomReaction } = require('./data');
+const { default: mongoose } = require('mongoose');
 
 connection.on('error', (err) => err);
 
@@ -52,11 +53,15 @@ connection.once('open', async () => {
         username: 'dancastro',
         email: 'dancastro.java@gmail.com',
         thoughts: [
-            {
-                thoughtText: "This is a thought.",
-                username: "dancastro",
-            }
+            new mongoose.Types.ObjectId,
+            new mongoose.Types.ObjectId,
+            new mongoose.Types.ObjectId
         ],
+        friends: [
+            new mongoose.Types.ObjectId,
+            new mongoose.Types.ObjectId,
+            new mongoose.Types.ObjectId
+        ]
     })
 
     generateUserData();
