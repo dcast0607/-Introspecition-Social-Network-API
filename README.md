@@ -37,6 +37,68 @@ The following must be installed to successfully use this API:
 
 ## Usage
 
+This API has been built to work alongside a Mongo database. The users, thoughts, and reactions object have all been correlated with each other to work asynchronously. The users object should not only allow you to create, retrieve, update, and delete users but it should also allow you to see any thoughts and friends that are associated to the particular user record. For example: 
+
+```
+{
+  "_id": {
+    "$oid": "6301b08b648621b7ff2431fb"
+  },
+  "username": "johnnyTest",
+  "email": "testEmail2@email.com",
+  "friends": [
+    {
+      "$oid": "6301b08b648621b7ff2431f4"
+    }
+  ],
+  "thoughts": [
+    {
+      "$oid": "6301b08b648621b7ff2431e2"
+    },
+    {
+      "$oid": "6301b08b648621b7ff2431e3"
+    }
+  ]
+}
+
+```
+
+As you can see this object contains information about the particular user as well as thoughts that have been associated to this user and friends for this particular user. 
+
+The thoughts object has also been created to contain the reactions object within it, as you can see from the example below: 
+
+```
+{
+  "_id": {
+    "$oid": "6301b08b648621b7ff2431de"
+  },
+  "thoughtText": "Many of us are uncomfortable giving out our address to strangers, unless they bring food.",
+  "username": "testUser1",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1661055115811"
+    }
+  },
+  "reactions": [
+    {
+      "reactionBody": "🤣",
+      "username": "testUser1",
+      "_id": {
+        "$oid": "6301b08b648621b7ff24320b"
+      },
+      "reactionId": {
+        "$oid": "6301b08b648621b7ff24320c"
+      },
+      "createdAt": {
+        "$date": {
+          "$numberLong": "1661055115842"
+        }
+      }
+    }
+  ]
+}
+```
+
 ## Testing Through Our Postman Collection
 
 I've created a postman collection that you can use to test the Introspection API. Although the API is pretty self-explanatory, please make sure that you read through the README to fully understand the functionality of this API.
