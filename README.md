@@ -129,4 +129,4 @@ When testing this application, please be aware that I added some sample data for
 
 To get a deeper look at the API documentation, please navigate to the API documentation wiki by clicking on the link below. 
 
-[![Click Here to Access the API Documentation Wiki](https://github.com/dcast0607/Introspecition-Social-Network-API/wiki/Introspection-API-Documentation)]
+![Click Here to Access the API Documentation Wiki](https://github.com/dcast0607/Introspecition-Social-Network-API/wiki/Introspection-API-Documentation)
