@@ -171,6 +171,14 @@ Schemas for the database can be found in the ```models``` folder.
 
 ## Licensing
 
+This project is licensed under the MIT license. 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) </br>
+![License:NodeJS](https://img.shields.io/badge/License-Node%20JS-yellowgreen)</br>
+![License:Express JS](https://img.shields.io/badge/License-Express%20JS-brightgreen)</br>
+![License:MongoDB](https://img.shields.io/badge/License-MondoDB-lightgrey)</br>
+![License:Mongoose](https://img.shields.io/badge/License-Mongoose-blue)</br>
+
 ## Contributors
 **Name:** Daniel Castro </br>
 **GitHub Profile:** https://github.com/dcast0607/ </br>
