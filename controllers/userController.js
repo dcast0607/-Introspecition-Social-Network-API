@@ -156,7 +156,7 @@ module.exports = {
             res.status(200).json({ Message: "User friend list has been updated successfully."});
         })
         .catch((err) => {
-            res.status(500).json(err.message);
+            res.status(500).json({Message: "Please include a valid user ID in your request and then try again."});
         })
     },
     // End of function to add friends to user record

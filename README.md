@@ -27,7 +27,11 @@ As previously mentioned, these objects have been built to mimic some of the basi
 * [Testing Through Postman](#testing-through-our-postman-collection)
 * [Getting Started](#getting-started)
 * [API Documentation](#api-documentation)
-* 
+* [API Demo](#api-demo)
+* [Database Information](#database-information)
+* [Licensing](#licensing)
+* [Contributors](#contributors)
+* [Questions](#questions)
 
 
 ## Installation
@@ -134,3 +138,27 @@ When testing this application, please be aware that I added some sample data for
 To get a deeper look at the API documentation, please navigate to the API documentation wiki by clicking on the link below. 
 
 [Click Here to Access the API Documentation Wiki](https://github.com/dcast0607/Introspecition-Social-Network-API/wiki/Introspection-API-Documentation)
+
+## API Demo
+
+### User Routes
+
+### Thought Routes
+
+## Database Information
+**Mongo Database**
+
+![Alt text](./images/usersMongoDB.png "Users Database Collection") </br>
+![Alt text](./images/thoughtsMongoDB.png "Thoughts Database Collection") </br>
+
+Schemas for the database can be found in the ```models``` folder.
+
+## Licensing
+
+## Contributors
+**Name:** Daniel Castro </br>
+**GitHub Profile:** https://github.com/dcast0607/ </br>
+
+## Questions
+
+If you have any questions, please contact me at ```dancastro.java@gmail.com```.
