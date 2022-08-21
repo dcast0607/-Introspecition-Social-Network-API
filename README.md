@@ -107,7 +107,7 @@ The thoughts object has also been created to contain the reactions object within
 
 I've created a postman collection that you can use to test the Introspection API. Although the API is pretty self-explanatory, please make sure that you read through the README to fully understand the functionality of this API.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/109c14a80e21ef674f84?action=collection%2Fimport)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/collections/109c14a80e21ef674f84)
 
 #### Notes: 
 
