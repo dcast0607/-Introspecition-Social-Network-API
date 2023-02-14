@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "18ebf3f3-b1c9-4e02-b60a-dca3196cc9b9",
-		"name": "Introspection Social Network APi",
+		"name": "Introspection Social Network API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -10,7 +10,7 @@
 			"item": [
 				{
 					"name": "All Users",
-					"_postman_id": "b24e8d70-2c37-460d-b06c-1d6375403280",
+					"id": "b24e8d70-2c37-460d-b06c-1d6375403280",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -20,7 +20,7 @@
 				},
 				{
 					"name": "Single User",
-					"_postman_id": "7f9ebbcb-88ca-427d-885c-71b669a337a8",
+					"id": "7f9ebbcb-88ca-427d-885c-71b669a337a8",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -38,8 +38,7 @@
 								{
 									"id": "796080de-c8cb-499d-9b9e-d403e57ea4d7",
 									"key": "userId",
-									"value": "someUserID",
-									"type": "string"
+									"value": "someUserID"
 								}
 							]
 						}
@@ -48,7 +47,7 @@
 				},
 				{
 					"name": "Create User",
-					"_postman_id": "861ebc04-e3ff-4e24-8d74-8ced3f3bc703",
+					"id": "861ebc04-e3ff-4e24-8d74-8ced3f3bc703",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -67,7 +66,7 @@
 				},
 				{
 					"name": "Update Existing User",
-					"_postman_id": "153f40c7-7bdd-4685-b5f2-54da4ce1e155",
+					"id": "153f40c7-7bdd-4685-b5f2-54da4ce1e155",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -94,8 +93,7 @@
 								{
 									"id": "4e38e95c-b9fb-4aff-bd6e-de2dd7325bb1",
 									"key": "userId",
-									"value": "62f83a0a41c5f0267ee65b47",
-									"type": "string"
+									"value": "62f83a0a41c5f0267ee65b47"
 								}
 							]
 						}
@@ -104,7 +102,7 @@
 				},
 				{
 					"name": "Delete Existing User",
-					"_postman_id": "8b39f1c0-04f9-42cc-b190-8de624739b45",
+					"id": "8b39f1c0-04f9-42cc-b190-8de624739b45",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -122,8 +120,7 @@
 								{
 									"id": "b5c02aa8-6908-471b-a331-f9713c68a42b",
 									"key": "userId",
-									"value": "someUserID",
-									"type": "string"
+									"value": "someUserID"
 								}
 							]
 						}
@@ -132,7 +129,7 @@
 				},
 				{
 					"name": "Add Friend to User Record",
-					"_postman_id": "abe0a6e8-1d57-4c8f-9474-440df607aff2",
+					"id": "abe0a6e8-1d57-4c8f-9474-440df607aff2",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -152,14 +149,12 @@
 								{
 									"id": "d38c50e1-d0c8-4928-ab80-1a12beb0fe43",
 									"key": "userId",
-									"value": "someUserID",
-									"type": "string"
+									"value": "someUserID"
 								},
 								{
 									"id": "1ac8d3ea-ecd3-4956-a8b9-c4cfa2dc013c",
 									"key": "friendId",
-									"value": "someFriendID",
-									"type": "string"
+									"value": "someFriendID"
 								}
 							]
 						}
@@ -168,7 +163,7 @@
 				},
 				{
 					"name": "Delete Friend from User Record",
-					"_postman_id": "39854fb7-bec5-41ac-8f7b-58d21e0d85fd",
+					"id": "39854fb7-bec5-41ac-8f7b-58d21e0d85fd",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -188,14 +183,12 @@
 								{
 									"id": "4407f352-68e9-4002-8f9b-adc323314178",
 									"key": "userId",
-									"value": null,
-									"type": "any"
+									"value": null
 								},
 								{
 									"id": "c6588822-7d0c-49c1-83cc-2c0ebd9937d7",
 									"key": "friendId",
-									"value": null,
-									"type": "any"
+									"value": null
 								}
 							]
 						}
@@ -203,14 +196,14 @@
 					"response": []
 				}
 			],
-			"_postman_id": "9965d323-d697-4666-a64d-e9e85f506b7b"
+			"id": "9965d323-d697-4666-a64d-e9e85f506b7b"
 		},
 		{
 			"name": "Thoughts",
 			"item": [
 				{
 					"name": "All Thoughts",
-					"_postman_id": "e652838e-6229-4100-9455-f67356c93001",
+					"id": "e652838e-6229-4100-9455-f67356c93001",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -220,7 +213,7 @@
 				},
 				{
 					"name": "Single Thought",
-					"_postman_id": "54e94fe1-d9b0-4453-b1e0-95714de88b78",
+					"id": "54e94fe1-d9b0-4453-b1e0-95714de88b78",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -238,8 +231,7 @@
 								{
 									"id": "0c9a3de3-a974-4bee-8083-21a72e4ee85f",
 									"key": "thoughtId",
-									"value": "someThoughtID",
-									"type": "string"
+									"value": "someThoughtID"
 								}
 							]
 						}
@@ -248,7 +240,7 @@
 				},
 				{
 					"name": "Create Thought",
-					"_postman_id": "3021b190-1569-449a-b606-d71ba675de44",
+					"id": "3021b190-1569-449a-b606-d71ba675de44",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -267,7 +259,7 @@
 				},
 				{
 					"name": "Update Thought",
-					"_postman_id": "0b687fc4-772a-4a72-b21c-0593eea6db9d",
+					"id": "0b687fc4-772a-4a72-b21c-0593eea6db9d",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -294,8 +286,7 @@
 								{
 									"id": "3ecd4a70-99bd-45a6-8532-9513f58c3d4b",
 									"key": "thoughtId",
-									"value": "someThoughtID",
-									"type": "string"
+									"value": "someThoughtID"
 								}
 							]
 						}
@@ -304,7 +295,7 @@
 				},
 				{
 					"name": "Delete Thought",
-					"_postman_id": "115d64d7-591b-4f6c-bb06-e7a2ac54b7f6",
+					"id": "115d64d7-591b-4f6c-bb06-e7a2ac54b7f6",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -322,8 +313,7 @@
 								{
 									"id": "acb003ae-b87e-4dad-96c6-421b30f39495",
 									"key": "thoughtId",
-									"value": "someThoughtID",
-									"type": "string"
+									"value": "someThoughtID"
 								}
 							]
 						}
@@ -331,7 +321,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f60646c7-9c67-4d31-b86f-99ef3aa44816"
+			"id": "f60646c7-9c67-4d31-b86f-99ef3aa44816"
 		}
 	],
 	"event": [
