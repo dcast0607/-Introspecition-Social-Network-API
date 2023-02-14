@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "18ebf3f3-b1c9-4e02-b60a-dca3196cc9b9",
+		"name": "Introspection Social Network API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22928684"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/api/users/",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/api/users/:userId",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "someUserID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"someUsername\",\n    \"email\": \"someEmail@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiURL}}/api/users/",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Existing User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"someUsername\",\n  \"email\": \"someEmail@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiURL}}/api/users/:userId",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "62f83a0a41c5f0267ee65b47"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Existing User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/api/users/:userId",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "someUserID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Friend to User Record",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/api/users/:userId/friends/:friendId",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":userId",
+								"friends",
+								":friendId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "someUserID"
+								},
+								{
+									"key": "friendId",
+									"value": "someFriendID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Friend from User Record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/api/users/:userId/friends/:friendId",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								":userId",
+								"friends",
+								":friendId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": null
+								},
+								{
+									"key": "friendId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Thoughts",
+			"item": [
+				{
+					"name": "All Thoughts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/api/thoughts/",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"thoughts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single Thought",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/api/thoughts/:thoughtId",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"thoughts",
+								":thoughtId"
+							],
+							"variable": [
+								{
+									"key": "thoughtId",
+									"value": "someThoughtID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Thought",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"thoughtText\": \"Add your thought text here\",\n    \"username\": \"someUsername\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiURL}}/api/thoughts/",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"thoughts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Thought",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"thoughtText\": \"This thought has been updated through Postman\",\n    \"username\": \"testUser1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiURL}}/api/thoughts/:thoughtId",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"thoughts",
+								":thoughtId"
+							],
+							"variable": [
+								{
+									"key": "thoughtId",
+									"value": "someThoughtID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Thought",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/api/thoughts/:thoughtId",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"api",
+								"thoughts",
+								":thoughtId"
+							],
+							"variable": [
+								{
+									"key": "thoughtId",
+									"value": "someThoughtID"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiURL",
+			"value": "localhost:3001",
+			"type": "string"
+		}
+	]
+}
